@@ -10,7 +10,7 @@ const base64 = require("base-64");
 
 const { User } = require("../moudel/index");
 
-router.post("/signin", async (req, res) => {
+router.post("/signin", async (req, res, next) => {
   /*
     req.headers.authorization is : "Basic sdkjdsljd="
     To get username and password from this, take the following steps:
@@ -40,6 +40,7 @@ router.post("/signin", async (req, res) => {
 
     if (valid) {
       res.status(200).json(user);
+      next();
     } else {
       throw new Error("Invalid User");
     }

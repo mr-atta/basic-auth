@@ -17,7 +17,7 @@ const { User } = require("../moudel/index");
 //   // hash the password
 // });
 
-router.post("/signup", async (req, res) => {
+router.post("/signup", async (req, res, next) => {
   try {
     const valid = await User.findOne({
       where: { username: req.body.username },
